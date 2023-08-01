@@ -30,12 +30,10 @@ const FilterSort = () => {
       newCategory.push(option);
     }
     setCategory(newCategory);
-    console.log(newCategory)
   };
 
   const handleSortBy = (e) => {
     setSortBy(e.target.value);
-    console.log(sortBy)
   };
 
   useEffect(() => {

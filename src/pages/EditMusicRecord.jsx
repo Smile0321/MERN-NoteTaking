@@ -47,7 +47,7 @@ const EditMusicRecord = () => {
   useEffect(() => {
     let isCancelled = false;
     if (id) {
-      const currentMusic = musicRecords.find((album) => album._id === id);
+      const currentMusic = musicRecords.find((note) => note._id === id);
 
       if (currentMusic && !isCancelled) {
         setMusicName(currentMusic.title);

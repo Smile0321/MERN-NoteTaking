@@ -15,7 +15,7 @@ const Allroutes = () => {
         <Route path="/" element={<Home />} />
 
         <Route
-          path="/albums/:id/edit"
+          path="/notes/:id/edit"
           element={
             <RequireAuth>
               <EditMusicRecord />{" "}
@@ -23,7 +23,7 @@ const Allroutes = () => {
           }
         />
         <Route
-          path="/albums/create"
+          path="/notes/create"
           element={
             <RequireAuth>
               <AddMusicRecords />{" "}

@@ -82,23 +82,24 @@ const handleArchiveFailure = (payload) => {
 export const getMusicRecords = (params, token, toast) => (dispatch) => {
   dispatch(getMusicRequest());
   return axios
-    .get(`/albums`, params)
+    .get(`/notes`, params)
     .then((res) => {
       dispatch(getMusicSuccess(res.data));
-      // notify(toast, "Album Fetched successfully", "success");
+      // notify(toast, "Note Fetched successfully", "success");
     })
     .catch((err) => {
-      // console.log(err.response.data.message);
+      
       dispatch(getMusicFailure(err));
       notify(toast, err.response.data.message, "error");
     });
 };
 
 export const addMusicRecords = (payload, token, toast) => (dispatch) => {
+  
   dispatch(addMusicRequest());
   return axios({
     method: "post",
-    url: `/albums/create`,
+    url: `/notes/create`,
     data: payload,
     headers: {
       "Content-Type": "application/json",
@@ -106,7 +107,7 @@ export const addMusicRecords = (payload, token, toast) => (dispatch) => {
     },
   })
     .then((res) => {
-      // console.log(res.data);
+      
       dispatch(addMusicSuccess(res.data));
       notify(toast, "Note added successfully", "success");
     })
@@ -121,7 +122,7 @@ export const updateMusicRecords = (id, payload, token, toast) => (dispatch) => {
   dispatch(updateMusicRequest());
   return axios({
     method: "patch",
-    url: `/albums/${id}/edit`,
+    url: `/notes/${id}/edit`,
     data: payload,
     headers: {
       "Content-Type": "application/json",
@@ -141,7 +142,7 @@ export const updateMusicRecords = (id, payload, token, toast) => (dispatch) => {
 export const deleteMusicRecords = (id, token, toast) => (dispatch) => {
   dispatch(deleteMusicRequest());
   return axios
-    .delete(`/albums/${id}`, {
+    .delete(`/notes/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -161,7 +162,7 @@ export const archiveMusicRecords = (id, token, toast) => (dispatch) => {
   dispatch(handleArchiveRequest());
   return axios({
     method: "put",
-    url: `/albums/${id}/archive_handle`,
+    url: `/notes/${id}/archive_handle`,
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,

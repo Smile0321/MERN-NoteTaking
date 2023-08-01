@@ -81,7 +81,7 @@ export default function Navbar() {
         >
           <Button
             onClick={() => {
-              navigate("/albums/create");
+              navigate("/notes/create");
             }}
             fontSize={"sm"}
             size={{ base: "sm", sm: "md" }}

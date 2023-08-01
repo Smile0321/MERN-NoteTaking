@@ -26,7 +26,7 @@ function Login() {
   const dispatch = useDispatch();
   const location = useLocation();
   const toast = useToast();
-  // console.log(location);
+  
   const comingFrom = location.state?.from?.pathname || "/";
 
   const handleChange = (e) => {
@@ -36,13 +36,12 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(user)
 
     dispatch(loginRequest());
     axios
       .post(`/login`, user)
       .then((res) => {
-        console.log(res.data);
+        
         if (res.data.token) {
           let payload = res.data;
           dispatch(loginSuccess(payload));

@@ -73,8 +73,6 @@ const MusicRecords = ({ CurrentLocation }) => {
     };
   }, [location.search, musicRecords.length, page, limit]);
 
-
-
   return isLoading ? (
     <Loading />
   ) : isError ? (
@@ -185,7 +183,7 @@ const MusicRecords = ({ CurrentLocation }) => {
                 CreatedBy:{" "}
                 <Text as="span" color={"green"}>
                   {" "}
-                  {user.name}
+                  {el.userEmail}
                 </Text>{" "}
               </Text>
               <Text fontWeight={"bold"} noOfLines="1" style={{ textAlign: 'left' }}>
@@ -199,7 +197,7 @@ const MusicRecords = ({ CurrentLocation }) => {
             </VStack>
             {(token && user._id == el.userId) ?
               <HStack justifyContent={"space-between"} mt="1.5rem">
-                <Button colorScheme="blue" onClick={() => navigate(`/albums/${el._id}/edit`)}>
+                <Button colorScheme="blue" onClick={() => navigate(`/notes/${el._id}/edit`)}>
                   Edit
                 </Button>
                 <Button colorScheme={el.isArchived == false ? "green" : "blackAlpha"} onClick={() => handleArchive(el._id)}>

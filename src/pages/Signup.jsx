@@ -38,11 +38,11 @@ function Signup() {
   const handleSignup = (e) => {
     e.preventDefault();
     dispatch(signupRequest());
-    console.log(user)
+    
     axios
       .post("/signup", user)
       .then((res) => {
-        // console.log(res.data);
+        
         if (res.data) {
           dispatch(signupSuccess(res.data));
           notify(toast, res.data.message, "success");
